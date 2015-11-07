@@ -22,21 +22,21 @@ public class Account {
     gson = new Gson();
   }
 
-  public void createBucket(Bucket bucket) {
-    sendRequest(bucket.getEndpoint(), null, gson.toJson(bucket));
+  public boolean createBucket(Bucket bucket) {
+    return sendRequest(bucket.getEndpoint(), null, gson.toJson(bucket));
   }
 
-  public void createData(Bucket bucket, Data data) {
+  public boolean createData(Bucket bucket, Data data) {
 
     HashMap<String, String> hash = new HashMap<String, String>();
     hash.put(BUCKET_KEY, bucket.getKey());
-    sendRequest(data.getEndpoint(), hash, gson.toJson(data));
+    return sendRequest(data.getEndpoint(), hash, gson.toJson(data));
   }
 
-  public void createBulkData(Bucket bucket, Data[] bulkData) {
+  public boolean createBulkData(Bucket bucket, Data[] bulkData) {
     HashMap<String, String> hash = new HashMap<String, String>();
     hash.put(BUCKET_KEY, bucket.getKey());
-    sendRequest(bulkData[0].getEndpoint(), hash, gson.toJson(bulkData));
+    return sendRequest(bulkData[0].getEndpoint(), hash, gson.toJson(bulkData));
   }
 
   private boolean sendRequest(String endpoint, HashMap<String, String> customHeaders, String body) {
