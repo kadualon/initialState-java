@@ -3,7 +3,7 @@ package com.alonkadury.initialState;
 public class Bucket implements Events {
   private final static String BUCKET_API_URL = API_BASEURL + "buckets";
   private String key;
-  private String friendlyName;
+  private String bucketName;
 
   public Bucket(String key) {
     this(key, null);
@@ -11,7 +11,7 @@ public class Bucket implements Events {
 
   public Bucket(String key, String friendlyName) {
     this.key = key;
-    this.friendlyName = friendlyName;
+    this.bucketName = friendlyName;
   }
 
   public String getKey() { return key; }
