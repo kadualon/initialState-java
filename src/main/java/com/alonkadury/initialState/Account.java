@@ -39,7 +39,7 @@ public class Account {
     sendRequest(bulkData[0].getEndpoint(), hash, gson.toJson(bulkData));
   }
 
-  private void sendRequest(String endpoint, HashMap<String, String> customHeaders, String body) {
+  private boolean sendRequest(String endpoint, HashMap<String, String> customHeaders, String body) {
     try {
       URL url = new URL(endpoint);
       HttpsURLConnection con = (HttpsURLConnection)url.openConnection();
@@ -62,24 +62,28 @@ public class Account {
       writer.close();
 
       int responseCode = con.getResponseCode();
-      System.out.println("Response Code : " + responseCode); // TODO: remove
+      //System.out.println("Response Code : " + responseCode);
 
-      InputStream is = con.getInputStream();
-      BufferedReader reader = new BufferedReader(new InputStreamReader(is));
-      String line;
-      StringBuffer response = new StringBuffer();
-      while((line = reader.readLine()) != null) {
-        response.append(line);
-        response.append('\r');
-      }
-      reader.close();
-
-      System.out.println(response.toString()); // TODO: handle errors
+      //InputStream is = con.getInputStream();
+      //BufferedReader reader = new BufferedReader(new InputStreamReader(is));
+      //String line;
+      //StringBuffer response = new StringBuffer();
+      //while((line = reader.readLine()) != null) {
+      //  response.append(line);
+      //  response.append('\r');
+      //}
+      //reader.close();
+      //System.err.println(response.toString());
       con.disconnect();
+
+      if (responseCode >= 200 && responseCode < 300)
+        return true;
+      else
+        return false;
     }
     catch (IOException ex) {
       System.err.println(ex.toString());
-      // TODO: handle excpetions
+      return false;
     }
   }
 }
