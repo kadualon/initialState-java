@@ -19,6 +19,4 @@ public class Data<T> implements Events {
   public String getEndpoint() {
     return DATA_API_URL;
   }
-
-  // TODO: add annotations
 }

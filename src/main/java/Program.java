@@ -21,6 +21,7 @@ public class Program {
     account.createBulkData(bucket, new Data[]{data, data});
 
     // close
+    account.terminate();
     threadedAccount.terminate();
   }
 }

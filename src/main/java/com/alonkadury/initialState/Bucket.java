@@ -15,7 +15,7 @@ public class Bucket implements Events {
   }
 
   public String getKey() { return bucketKey; }
-  //public String getFriendlyName() { return friendlyName; }
+  public String getFriendlyName() { return bucketName; }
 
   public String getEndpoint() {
     return BUCKET_API_URL;
