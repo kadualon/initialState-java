@@ -5,7 +5,7 @@ import java.io.*;
 import java.net.URL;
 import java.util.HashMap;
 
-public class EventTask implements Runnable {
+class EventTask implements Runnable {
   private final static String METHOD_TYPE = "POST";
   private final static String CONTENT_TYPE_KEY = "Content-Type";
   private final static String CONTENT_TYPE_VALUE = "application/json";
